@@ -4,7 +4,10 @@ var app=express();
 app.use(function (req,res) {
     console.log(req.headers);
     var response={}
-    response.ipaddress=req.ip.split(':')[req.ip.split(':').length-1];
+    response.ipaddress=req.headers['x-forwarded-for'].split(',')[0] || 
+     req.connection.remoteAddress || 
+     req.socket.remoteAddress ||
+     req.connection.socket.remoteAddress;
     response.language=req.get("accept-language").split(',')[0];
     response.software=req.get("user-agent").split('(')[1].split(')')[0];
     res.send(JSON.stringify(response));

@@ -2,8 +2,10 @@
   "name": "Request Header Parser",
   "version": "0.0.1",
   "author": "Abhinav",
+  "scripts":{
+    "start": "node server.js"
+  },
   "dependencies": {
-    "body-parser": "^1.17.2",
     "express": "^4.15.3"
   }
 }
